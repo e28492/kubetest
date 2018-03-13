@@ -5,7 +5,8 @@ pipeline {
 		 steps {
 			 sh '''
 			 echo "BUILD NUMBER: ${BUILD_NUMBER}"
-			 bx login --apikey apiKey.json
+			 cat apiKey.json
+			 bx login --apikey @apiKey.json
 			 bx cs region-set us-south
 			 bx cs cluster-config mycluster
 			 export KUBECONFIG=/root/.bluemix/plugins/container-service/clusters/mycluster/kube-config-hou02-mycluster.yml
