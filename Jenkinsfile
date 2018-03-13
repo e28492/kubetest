@@ -13,6 +13,10 @@ pipeline {
 			 $(bx cs cluster-config mycluster|grep KUBECONFIG)
 			 set | grep KUBECONFIG
 			 kubectl cluster-info
+			 if kubectl describe deployment productpage-v1; then
+                echo "Apps already exists, delete first"
+                kubectl delete -f bookinfo.yaml
+             fi
 			 kubectl create -f bookinfo.yaml
 			 '''
 		 }
