@@ -8,8 +8,10 @@ pipeline {
 			 cat apiKey.json
 			 bx login --apikey @apiKey.json
 			 bx cs region-set us-south
-			 bx cs cluster-config mycluster
-			 export KUBECONFIG=/root/.bluemix/plugins/container-service/clusters/mycluster/kube-config-hou02-mycluster.yml
+			 #bx cs cluster-config mycluster
+			 #export KUBECONFIG=/root/.bluemix/plugins/container-service/clusters/mycluster/kube-config-hou02-mycluster.yml
+			 $(bx cs cluster-config mycluster|grep KUBECONFIG)
+			 set | grep KUBECONFIG
 			 kubectl cluster-info
 			 kubectl create -f bookinfo.yaml
 			 '''
