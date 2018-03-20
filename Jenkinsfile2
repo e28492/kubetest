@@ -6,7 +6,7 @@ pipeline {
 	   sh '''
 			 bx login --apikey @apiKey.json
 			 bx cs region-set us-south
-			 kubectl cluster-info
+			 #kubectl cluster-info
 			 '''
        kubernetesDeploy (
            configs: '*.yaml', 
