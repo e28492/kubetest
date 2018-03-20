@@ -2,10 +2,12 @@ pipeline {
  agent any
  stages {
    stage('deploy') {
+	 steps {
        kubernetesDeploy (
            configs: './bookinfo.yaml', 
            kubeConfig: [path: '/root/.bluemix/plugins/container-service/clusters/mycluster/kube-config-hou02-mycluster.yml']
         )       
+   	}
    }
  }
 }
