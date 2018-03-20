@@ -3,6 +3,11 @@ pipeline {
  stages {
    stage('deploy') {
 	 steps {
+	   sh '''
+			 bx login --apikey @apiKey.json
+			 bx cs region-set us-south
+			 kubectl cluster-info
+			 '''
        kubernetesDeploy (
            configs: '*.yaml', 
            kubeConfig: [path: '/root/.bluemix/plugins/container-service/clusters/mycluster/kube-config-hou02-mycluster.yml']
