@@ -6,6 +6,7 @@ pipeline {
 	   sh '''
 			 bx login --apikey @apiKey.json
 			 bx cs region-set us-south
+			 $(bx cs cluster-config mycluster|grep KUBECONFIG)
 			 #kubectl cluster-info
 			 '''
        kubernetesDeploy (
