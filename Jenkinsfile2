@@ -9,6 +9,7 @@ pipeline {
 			 #kubectl cluster-info
 			 '''
        kubernetesDeploy (
+       	   credentialsType: 'KubeConfig',
            configs: '*.yaml', 
            kubeConfig: [path: '/root/.bluemix/plugins/container-service/clusters/mycluster/kube-config-hou02-mycluster.yml']
         )       
